@@ -1,19 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
-const ImageSlider = ({ images, autoPlay = true, interval = 2000 }) => {
+const TRANSITION_DURATION = 1000; // Keep in sync with Tailwind class `duration-1000`
+
+const ImageSlider = ({ images = [], autoPlay = true, interval = 2000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  useEffect(() => {
-    if (!autoPlay) return;
+  const totalDelay = useMemo(() => Math.max(interval, 0) + TRANSITION_DURATION, [interval]);
 
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => 
+  useEffect(() => {
+    if (!autoPlay || images.length === 0) return;
+
+    const timer = setTimeout(() => {
+      setCurrentIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
-    }, interval);
+    }, totalDelay);
 
-    return () => clearInterval(timer);
-  }, [images.length, autoPlay, interval]);
+    return () => clearTimeout(timer);
+  }, [currentIndex, images.length, autoPlay, totalDelay]);
 
   const goToPrevious = () => {
     setCurrentIndex(currentIndex === 0 ? images.length - 1 : currentIndex - 1);

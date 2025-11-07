@@ -484,7 +484,7 @@ function Home() {
             <ImageSlider
               images={sliderImages}
               autoPlay={true}
-              interval={5000}
+              interval={2000}
             />
           </div>
         </section>

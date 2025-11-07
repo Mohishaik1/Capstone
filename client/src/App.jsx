@@ -5,6 +5,7 @@ import { useState } from "react";
 //Components
 // import animate from "./components/Animation";
 import Time from "./components/Time";
+import ScrollToTop from "./components/ScrollToTop";
 
 //Pages
 import Packages from "./pages/Packages";
@@ -28,6 +29,7 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/contact" element={<Contact />} />
