@@ -1,0 +1,9 @@
+This page includes future updates/versions.
+
+Need an admin page where admin can register/update/delete a user of images/videos in the app.
+
+Create static file for images, and change it from base 64.
+
+Input logo inside home page ad description
+
+make user-registation and package selection features in it
