@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const ImageSlider = ({ images, autoPlay = true, interval = 3000 }) => {
+const ImageSlider = ({ images, autoPlay = true, interval = 2000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
