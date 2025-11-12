@@ -26,7 +26,7 @@ app.use('/api/user', userRouter);
 app.use('/api/user', routing);
 app.use('/api/user', router);
 
-const distPath = path.join(__dirname, "../client/dist");
+const distPath = path.join(__dirname, "dist");
 if (fs.existsSync(distPath)) {
   app.use(express.static(distPath));
   app.get("*", (req, res, next) => {
