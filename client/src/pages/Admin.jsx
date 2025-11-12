@@ -5,6 +5,8 @@ import axios from 'axios'
 //Components
 import Time from '../components/Time';
 
+const API_BASE_URL = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
+
 const Admin = ({ time }) => {
   const [contactForms, setContactForms] = useState([])
   const [packages, setPackages] = useState([])
@@ -48,7 +50,7 @@ const Admin = ({ time }) => {
   const fetchContactForms = async () => {
     try {
       console.log('Fetching contact forms...')
-      const response = await axios.get('http://localhost:5500/api/user/contact')
+      const response = await axios.get(`${API_BASE_URL}/api/user/contact`)
       console.log('Contact forms response:', response.data)
       setContactForms(response.data)
       setLoading(false)
@@ -61,7 +63,7 @@ const Admin = ({ time }) => {
   // Fetch all packages
   const fetchPackages = async () => {
     try {
-      const response = await axios.get('http://localhost:5500/api/user/addpackages')
+      const response = await axios.get(`${API_BASE_URL}/api/user/addpackages`)
       setPackages(response.data)
     } catch (error) {
       console.error('Error fetching packages:', error)
@@ -71,7 +73,7 @@ const Admin = ({ time }) => {
   // Delete a contact form
   const deleteContactForm = async (id) => {
     try {
-      await axios.delete(`http://localhost:5500/api/user/contact/${id}`)
+      await axios.delete(`${API_BASE_URL}/api/user/contact/${id}`)
       setContactForms(contactForms.filter(form => form._id !== id))
       alert('Contact form deleted successfully!')
     } catch (error) {
@@ -125,14 +127,14 @@ const Admin = ({ time }) => {
     try {
       if (isEditMode) {
         // Update existing package
-        await axios.put(`http://localhost:5500/api/user/updatepackage/${editingPackageId}`, packageForm)
+        await axios.put(`${API_BASE_URL}/api/user/updatepackage/${editingPackageId}`, packageForm)
         alert('Package updated successfully!')
         setIsEditMode(false)
         setEditingPackageId(null)
       } else {
         // Add new package - make sure we don't send any _id
         const { _id, ...packageDataWithoutId } = packageForm;
-        await axios.post('http://localhost:5500/api/user/addpackage', packageDataWithoutId)
+        await axios.post(`${API_BASE_URL}/api/user/addpackage`, packageDataWithoutId)
         alert('Package added successfully!')
       }
       
@@ -193,7 +195,7 @@ const Admin = ({ time }) => {
   const handleDeletePackage = async (id) => {
     if (window.confirm('Are you sure you want to delete this package?')) {
       try {
-        await axios.delete(`http://localhost:5500/api/user/deletepackage/${id}`)
+        await axios.delete(`${API_BASE_URL}/api/user/deletepackage/${id}`)
         alert('Package deleted successfully!')
         fetchPackages()
       } catch (error) {
