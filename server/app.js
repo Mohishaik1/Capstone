@@ -26,24 +26,18 @@ app.use('/api/user', userRouter);
 app.use('/api/user', routing);
 app.use('/api/user', router);
 
-const buildPath = path.join(__dirname, "build");
-if (fs.existsSync(buildPath)) {
-  app.use(express.static(buildPath));
-  app.get(/^\/(?!api).*/, (req, res) => {
-    res.sendFile(path.join(buildPath, "index.html"));
-  });
-}
-
-
-app.get('/', (req,res)=>{
-    try {
-        res.send(`Express running at port ${PORT}`)
-    } catch (error) {
-        console.log(error)
+const distPath = path.join(__dirname, "../client/dist");
+if (fs.existsSync(distPath)) {
+  app.use(express.static(distPath));
+  app.get("*", (req, res, next) => {
+    if (req.path.startsWith("/api")) {
+      return next();
     }
-})
-
-
+    res.sendFile(path.join(distPath, "index.html"));
+  });
+} else {
+  console.warn(`Static build not found at ${distPath}. Run "npm run build" in the client project and redeploy.`);
+}
 
 
 app.listen(PORT,()=>{
