@@ -124,7 +124,7 @@ const Login = ({ alert, showAlert }) => {
               <hr className="my-4" />
 
               {/* Terms */}
-              <p className="text-sm text-gray-600 text-center">
+              {/* <p className="text-sm text-gray-600 text-center">
                 By logging in you agree to our{" "}
                 <a
                   href="#"
@@ -132,7 +132,7 @@ const Login = ({ alert, showAlert }) => {
                 >
                   Terms & Privacy
                 </a>
-              </p>
+              </p> */}
 
               {/* Login Button */}
               <button
@@ -143,9 +143,9 @@ const Login = ({ alert, showAlert }) => {
               </button>
 
               {/* Register Link */}
-              <div className="text-center mt-4">
+              {/* <div className="text-center mt-4">
                 <p className="text-sm text-gray-600">
-                  Don't have an account?{" "}
+                  Don't have an account?
                   <Link
                     to="/register"
                     className="text-blue-600 font-semibold hover:underline"
@@ -153,7 +153,7 @@ const Login = ({ alert, showAlert }) => {
                     Register
                   </Link>
                 </p>
-              </div>
+              </div> */}
             </form>
           </div>
         </div>
