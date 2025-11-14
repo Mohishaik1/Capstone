@@ -245,7 +245,7 @@ const Admin = ({ time }) => {
             
             {time && (
               <div className="bg-gradient-to-r from-green-100 to-blue-100 px-4 py-2 rounded-lg border border-green-200">
-                {time}
+                {Time}
               </div>
             )}
             
