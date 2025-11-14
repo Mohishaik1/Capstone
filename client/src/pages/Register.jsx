@@ -8,7 +8,7 @@ import axios from 'axios';
 import Alert from '../components/Alert';
 import { use } from "react";
 
-
+const API_BASE_URL = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
 
 const Register = ({alert, showAlert}) => {
 
@@ -43,7 +43,7 @@ const Register = ({alert, showAlert}) => {
                   msg: 'Passwords do not match'
                 });
             } else {
-                const {data} = await axios.post('http://localhost:5500/api/user/register', registerFormData);
+                const {data} = await axios.post(`${API_BASE_URL}/api/user/register`, registerFormData);
                 console.log(data);
                 showAlert({
                   type: 'success',

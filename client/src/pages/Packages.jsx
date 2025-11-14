@@ -10,7 +10,7 @@ import madinaImages from '../assets/Images/ZiyaratImages/Madina ziyarat places';
 
 
 
-// const API_BASE_URL = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
+const API_BASE_URL = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
 
 const Packages = () => {
   const [plans, setPlans] = useState([]);
@@ -19,7 +19,7 @@ const Packages = () => {
   useEffect(()=>{
     async function fetchPackages(){
       try {
-        const {data} = await axios.get('http://localhost:5500/api/user/addpackages')
+        const {data} = await axios.get(`${API_BASE_URL}/api/user/addpackages`)
         setPlans(data);
         // console.log(plans);
       } catch (error) {
