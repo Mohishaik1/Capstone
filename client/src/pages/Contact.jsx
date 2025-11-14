@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import API_BASE_URL from '../config/api';
 
 const Contact = () => {
   const [contactData, setContactData] = useState({
@@ -30,7 +29,7 @@ const Contact = () => {
       setIsSubmitting(true);
       setSubmitStatus(null);
       
-      const { data } = await axios.post(`${API_BASE_URL}/api/user/contact`, contactData);
+      const { data } = await axios.post('http://localhost:5500/api/user/contact', contactData);
     console.log(data);
       
       setSubmitStatus('success');

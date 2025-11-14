@@ -7,7 +7,6 @@ import axios from 'axios';
 //components
 import Alert from '../components/Alert';
 import { use } from "react";
-import API_BASE_URL from '../config/api';
 
 
 
@@ -44,7 +43,7 @@ const Register = ({alert, showAlert}) => {
                   msg: 'Passwords do not match'
                 });
             } else {
-                const {data} = await axios.post(`${API_BASE_URL}/api/user/register`, registerFormData);
+                const {data} = await axios.post('http://localhost:5500/api/user/register', registerFormData);
                 console.log(data);
                 showAlert({
                   type: 'success',

@@ -8,8 +8,9 @@ import { useNavigate,Link } from "react-router-dom";
 import makkaImages from '../assets/Images/ZiyaratImages/Makka ziyarat images';
 import madinaImages from '../assets/Images/ZiyaratImages/Madina ziyarat places';
 
-//API Config
-import API_BASE_URL from '../config/api';
+
+
+// const API_BASE_URL = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
 
 const Packages = () => {
   const [plans, setPlans] = useState([]);
@@ -18,7 +19,7 @@ const Packages = () => {
   useEffect(()=>{
     async function fetchPackages(){
       try {
-        const {data} = await axios.get(`${API_BASE_URL}/api/user/addpackages`)
+        const {data} = await axios.get('http://localhost:5500/api/user/addpackages')
         setPlans(data);
         // console.log(plans);
       } catch (error) {
