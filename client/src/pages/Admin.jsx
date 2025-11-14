@@ -4,8 +4,7 @@ import axios from 'axios'
 
 //Components
 import Time from '../components/Time';
-
-const API_BASE_URL = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
+import API_BASE_URL from '../config/api';
 
 const Admin = ({ time }) => {
   const [contactForms, setContactForms] = useState([])

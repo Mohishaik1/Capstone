@@ -6,6 +6,7 @@ import { useEffect } from "react";
 
 //Components
 import Alert from "../components/Alert";
+import API_BASE_URL from "../config/api";
 
 const Login = ({ alert, showAlert }) => {
   const [adminLogin, setAdminLogin] = useState({
@@ -32,7 +33,7 @@ const Login = ({ alert, showAlert }) => {
     try {
       e.preventDefault();
       const { data } = await axios.post(
-        "http://localhost:5500/api/user/login",
+        `${API_BASE_URL}/api/user/login`,
         adminLogin
       );
       console.log(data);
