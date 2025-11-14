@@ -26,7 +26,7 @@ const corsOptions = {
   origin: [
     'https://www.mohiddinsharieff.xyz',
     'http://localhost:5500',
-    'http://localhost:5173'
+    'http://localhost:5174'
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
