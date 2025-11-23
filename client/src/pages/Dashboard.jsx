@@ -1,12 +1,18 @@
-import React from 'react'
+import React from "react";
 
 const Dashboard = () => {
   return (
-    <div><h1>Dashboard</h1></div>
-  )
-}
+    <div>
+      <h1>Dashboard</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum excepturi
+        numquam velit, dolorum rerum mollitia iste! Quos est voluptatum laborum.
+      </p>
+    </div>
+  );
+};
 
-export default Dashboard
+export default Dashboard;
 
 //This dashboard is created for future use where users can see their booked packages and other details.
 //Currently, it serves as a placeholder for protected routes in the application.
