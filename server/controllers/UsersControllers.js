@@ -40,17 +40,17 @@ router.post('/login', async (req,res)=>{
         const {email,psw}  = req.body;
         const user = await registerModel.findOne({email});
 
-        if(user){
-            console.log(user.psw, user.email);
-            var comparehash = await bcrypt.compare(psw, user.psw);
-        }
-
         if (!user) {
             console.error("This email is not associated whith any account");
             return res.json({error:"This email is not associated whith any account"})
-        }else if(!comparehash){
-                console.error("Incorrect Password");
-                return res.json({error:"Incorrect Password"})
+        }
+
+        console.log(user.psw, user.email);
+        const comparehash = await bcrypt.compare(psw, user.psw);
+
+        if(!comparehash){
+            console.error("Incorrect Password");
+            return res.json({error:"Incorrect Password"})
         }
 
         let payload = {

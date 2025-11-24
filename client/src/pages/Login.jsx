@@ -19,7 +19,7 @@ const Login = ({ alert, showAlert }) => {
     if (localStorage.getItem("token")) {
       navigate("/admin", { replace: true });
     }
-  }, []);
+  }, [navigate]);
 
   const onChangeHandler = (e) => {
     setAdminLogin({
